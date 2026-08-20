@@ -1,0 +1,79 @@
+{
+  "protocol": "strict retrospective chronological revalidation; selection on 2013-06..2018-12 only",
+  "dev_selected_structure": "central 90% variance weight (NOT the 85-115% corridor)",
+  "dev_selected_hedge": "daily (band $250k had NEGATIVE paired improvement of -$31,674 on development)",
+  "windows": {
+    "DEV 2013-06..2018-12": {
+      "trades": 67,
+      "net": 132862.04120670538,
+      "sharpe": 0.7017233205260054,
+      "ann_return": 0.0241552317325779,
+      "t_iid": 1.6334612773168304,
+      "max_dd": 0.0426880413129747,
+      "worst": -38844.237151999994,
+      "es95": -24915.561170874964
+    },
+    "VAL 2019-01..2022-12": {
+      "trades": 48,
+      "net": 254587.62662800011,
+      "sharpe": 0.526512651632726,
+      "ann_return": 0.0650721697871777,
+      "t_iid": 1.029961094022129,
+      "max_dd": 0.2404337557188868,
+      "worst": -211142.49331349967,
+      "es95": -88532.8228071665
+    },
+    "FINAL 2023-01..2025-08": {
+      "trades": 32,
+      "net": -16821.93101549984,
+      "sharpe": -0.0537785838324001,
+      "ann_return": -0.0065294477188218,
+      "t_iid": -0.0848446366869377,
+      "max_dd": 0.1683965030716696,
+      "worst": -188383.39141099996,
+      "es95": -101664.615013
+    },
+    "FULL 2013-06..2025-08": {
+      "trades": 147,
+      "net": 370627.73681920575,
+      "sharpe": 0.3278745495120796,
+      "ann_return": 0.0304754121731685,
+      "t_iid": 1.1392734909026363,
+      "max_dd": 0.2131229136142568,
+      "worst": -211142.49331349967,
+      "es95": -70057.13574531242
+    }
+  },
+  "sharpe_retention": {
+    "val_over_dev": 0.7503137436533489,
+    "final_over_dev": -0.07663787458579567
+  },
+  "pnl_share": {
+    "DEV": 0.3584784084077232,
+    "VAL": 0.6869092659198072,
+    "FINAL": -0.04538767432753062
+  },
+  "tail_understated_in_dev": {
+    "worst_dev": -38844.237151999994,
+    "worst_val": -211142.49331349967,
+    "worst_final": -188383.39141099996
+  },
+  "post_selection_premium_sharpe": 0.42709773493505043,
+  "overfitting_verdict": {
+    "A_dev_chose_85_115": false,
+    "B_dev_chose_250k_band": false,
+    "C_dev_choice": "central 90% variance weight + daily hedge",
+    "D_positive_in_validation": true,
+    "E_positive_in_final": false,
+    "F_sharpe_collapsed": true,
+    "G_full_sample_dominated_by_2019_2022": true,
+    "H_full_sample_selection_inflated_results": true,
+    "I_85_115_and_250k_are_post_selection_artifacts": true
+  },
+  "classification": {
+    "structural_finding": "Variance carry exists and wing truncation lowers cost: the central-90% strip beat the full strip on development (0.702 vs 0.585) without seeing later data.",
+    "parameter_finding": "85-115% and the $250k band are NOT supported by development data and are post-selection artifacts.",
+    "strategy_edge": "Not demonstrated. The development-selected strategy is negative in the final window."
+  },
+  "result": "RESULT C - development-selected edge does not survive; prior result is likely post-selection / overfit"
+}

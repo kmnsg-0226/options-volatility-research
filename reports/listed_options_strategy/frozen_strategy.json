@@ -1,0 +1,56 @@
+{
+  "costs": {
+    "execution_lambda": 0.75,
+    "hedge_slippage_bps": 0.5,
+    "option_commission_per_contract": 0.65,
+    "quote_filters": {
+      "max_relative_spread": 0.6,
+      "min_mid": 0.05
+    }
+  },
+  "development_window": "2013-01-01 to 2022-12-31",
+  "entry": {
+    "dte_band": [
+      25,
+      40
+    ],
+    "schedule": "first trading day of each calendar month",
+    "strike_rule": "nearest listed strike to the put-call-parity forward",
+    "target_dte": 30
+  },
+  "entry_filter": null,
+  "entry_filter_rejected_because": "improves only 2 of 4 development blocks",
+  "exit": {
+    "reason": "American options; early assignment on short in-the-money legs is not modelled",
+    "rule": "close all legs on the first trading day with DTE <= 7"
+  },
+  "financing": "self-financing cash account accrued on calendar days at the entry-date zero rate",
+  "hedge": {
+    "convention": "daily Black-Scholes aggregate option delta hedged to zero with SPY",
+    "greeks": "point-in-time Black-Scholes on same-date spot, rate, remaining maturity and the dividend implied by put-call parity",
+    "not_used": "the model-free log-contract identity hedge, which belongs to the variance-swap engine",
+    "stale_quote_policy": "if a leg's implied volatility cannot be inverted, its last solved volatility is repriced at today's spot; if no leg solves, the existing hedge is held rather than liquidated"
+  },
+  "name": "V8 delta-hedged listed SPY short straddle",
+  "oos_window": "2023-01-01 to 2025-08-29",
+  "pre_registered_comparator": "the 10-delta winged structure, run OOS alongside as the section 14 comparator",
+  "selection": "section 28 fallback - no variant cleared the hierarchy; the naked structure is retained as the simplest specification that is profitable after realistic costs",
+  "sha256": "7155b37835e9e421965c305627f19928753fd1f74ad8ef1fb0e6c6e6a26c6841",
+  "sizing": {
+    "cap": "0.5 x |Gamma x S^2| x 0.03^2 <= 5% of $1,000,000 reference capital",
+    "cap_derivation": "development risk accounting: at a $10,000 vega target a 3% one-day move costs a median 4.2% of capital, so a 5% cap binds only in the upper quartile",
+    "cap_may_only_reduce_size": true,
+    "primary": "absolute portfolio vega of $10,000 per volatility point",
+    "rounding": "floor to integer structures"
+  },
+  "structure": {
+    "legs": [
+      "short 1 call nearest the parity forward",
+      "short 1 put nearest the parity forward"
+    ],
+    "wings": null,
+    "wings_rejected_because": "long wings are long the 10-15 delta region, whose implied variance carries a positive premium, and short the at-the-money, whose premium in this sample is negative"
+  },
+  "variant_budget": 6,
+  "variants_tested": 6
+}

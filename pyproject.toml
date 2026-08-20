@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "equity-options-research"
+version = "0.1.0"
+description = "Execution-aware SPY options volatility research with Black-Scholes Greeks, model-free variance, Heston calibration, and Monte Carlo tail pricing."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26", "pandas>=2.1", "scipy>=1.11",
+  "pyarrow>=14",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.5", "mypy>=1.10", "pre-commit>=3.7", "types-PyYAML"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/equity_options_research"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"quantconnect/*.py" = ["F403", "F405", "I001"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unreachable = true
+ignore_missing_imports = true
+warn_return_any = false

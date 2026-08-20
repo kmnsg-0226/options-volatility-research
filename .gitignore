@@ -1,0 +1,59 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.env
+data/raw/**/*.parquet
+data/processed/**/*.parquet
+data/live_snapshots/**/*.parquet
+reports/*.csv
+reports/*.json
+reports/*.png
+!reports/pricing_validation.json
+data/raw/
+
+# OS and editor artefacts
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# local scratch
+*.pkl
+cache/
+
+# ---------------------------------------------------------------------------
+# Generated report artefacts.
+#
+# reports/ holds only what a reader needs: memos, methodology, frozen
+# specifications, research summaries, the headline tables that verify the
+# README, and archive provenance. Everything a phase script regenerates -
+# per-trade, per-day and per-option dumps, and the per-phase figure sets - is
+# ignored so a re-run cannot quietly add ~18 MB back.
+# ---------------------------------------------------------------------------
+reports/**/figures/
+reports/**/*_ledger.csv
+reports/**/*_daily.csv
+reports/**/daily_*.csv
+reports/**/entry_greeks.csv
+reports/**/option_greeks.csv
+reports/**/chain_positions*.csv
+reports/**/trade_*.csv
+reports/**/walkforward_parameter_state.csv
+reports/**/heston_calibration.csv
+reports/**/heston_parameter_history.csv
+reports/**/capped_variance_pricing.csv
+reports/**/capped_variance_sensitivity.csv
+reports/**/model_free_variance_diagnostics.csv
+reports/**/signals.csv
+reports/archive/**/*.csv
+reports/archive/**/*.png
+
+# Default output paths of the removed diagnostics CLI; historical outputs are
+# archived under reports/archive/.
+reports/diagnostics/
+reports/local_eod/
+reports/diagnostic_eod/

@@ -1,0 +1,42 @@
+{
+  "design": "unconditional monthly short variance-swap replication, N_var=$1,000,000, ~30d expiry, held to settlement, daily delta hedge",
+  "trades": 152,
+  "gate_A_gross_positive": true,
+  "gate_B_replication_tracks_theory": {
+    "capture_ratio_full": 0.6986482209745843,
+    "correlation_full": 0.9188252294912079,
+    "median_abs_error_over_theory": 0.512,
+    "verdict": "weak"
+  },
+  "gate_C_net_positive_at_1x": true,
+  "gate_D_multiple_blocks_positive": "3 of 4",
+  "gate_E_not_one_period": {
+    "top5_share_of_net": 0.5477815799940521,
+    "verdict": "fails"
+  },
+  "gate_F_tail_acceptable": {
+    "max_drawdown": 0.21256928580953083,
+    "worst_trade": -211142.49331349967,
+    "skew": -5.995729661597972,
+    "verdict": "fails"
+  },
+  "statistics": {
+    "net_total": 373674.07875822077,
+    "sharpe": 0.32482591034022373,
+    "t_iid": 1.1479428293364664,
+    "nw_t": 1.1707363806189734,
+    "mean_trade_ci": [
+      -2385.435071904015,
+      6121.419667295387
+    ]
+  },
+  "variance_sources": {
+    "puts_pct": 68.56,
+    "calls_pct": 27.36,
+    "near_money_puts_90_100_pct": 53.76,
+    "deep_otm_puts_below_80_pct_of_variance": 7.09,
+    "deep_otm_puts_pct_of_contracts": 41.12
+  },
+  "proceed_to_timing_research": false,
+  "result": "RESULT B - gross variance premium exists but execution and tail risk make it weak"
+}

@@ -1,0 +1,4 @@
+secid,date,exdate,cp_flag,strike_price,best_bid,best_offer,volume,open_interest,impl_volatility,delta,gamma,vega,theta,optionid,cfadj,contract_size,forward_price,ticker,index_flag,issuer,exercise_style
+109820,2020-01-02,2020-02-06,C,320000,5.0,5.2,10,20,0.18,0.5,0.01,0.3,-0.4,201,1,100,,SPY,0,SSGA ACTIVE TRUST,A
+109820,2020-01-02,2020-02-06,C,320000,6.0,6.2,10,20,0.18,0.5,0.01,0.3,-0.4,202,1,100,,SPY,0,SSGA ACTIVE TRUST,A
+109820,2020-01-02,2020-02-06,P,320000,4.0,4.2,10,20,0.18,0.5,0.01,0.3,-0.4,203,1,100,,SPY,0,SSGA ACTIVE TRUST,A

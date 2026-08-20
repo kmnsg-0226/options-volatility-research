@@ -1,0 +1,110 @@
+{
+  "engine": "canonical: full CBOE strip + identity hedge N(2/T)(1/F-1/S) + self-financing cash, settled at expiry",
+  "reconciliation_max_error": 1.1641532182693481e-09,
+  "tracking_gate": {
+    "2013-2016": {
+      "corr": 0.9949986368748452,
+      "rmse": 2256.9052055047105,
+      "rel_rmse": 0.177325096865706
+    },
+    "2017-2019": {
+      "corr": 0.9929798718387316,
+      "rmse": 3631.990183650425,
+      "rel_rmse": 0.249925460189041
+    },
+    "2020-2022": {
+      "corr": 0.9997172301068744,
+      "rmse": 5169.4775447752845,
+      "rel_rmse": 0.0981330849534486
+    },
+    "2023-2025 OOS": {
+      "corr": 0.9973424785835724,
+      "rmse": 3709.2602677588543,
+      "rel_rmse": 0.1852958662649346
+    }
+  },
+  "legacy_vs_canonical_tracking": {
+    "legacy_corr": 0.712,
+    "legacy_rmse": 56493.0,
+    "canonical_corr": 0.9992695873513004,
+    "canonical_rmse": 3736.1181802987203
+  },
+  "baseline": {
+    "pre2023": {
+      "n": 120,
+      "theoretical_vs": 564512.7,
+      "gross": 487176.2,
+      "financing": -789.3,
+      "costs": 117783.1,
+      "net": 368603.8,
+      "sharpe": 0.148,
+      "t_iid": 0.463,
+      "max_dd": 0.602,
+      "worst": -732061.4,
+      "es95": -171332.0,
+      "skew": -8.72,
+      "kurtosis": 89.3,
+      "mean_premium": 0.0047
+    },
+    "oos": {
+      "n": 32,
+      "theoretical_vs": 74631.7,
+      "gross": 49550.7,
+      "financing": -16691.9,
+      "costs": 20794.8,
+      "net": 12063.9,
+      "sharpe": 0.033,
+      "t_iid": 0.052,
+      "max_dd": 0.222,
+      "worst": -209152.9,
+      "es95": -131506.0,
+      "skew": -4.69,
+      "kurtosis": 24.07,
+      "mean_premium": 0.00233
+    }
+  },
+  "implied_dividend": {
+    "mean": 0.017206483332291717,
+    "median": 0.00704398863616849,
+    "legacy_assumption": 0.013
+  },
+  "truncation_under_correct_hedge": {
+    "A frac full strip": {
+      "net": 380667.7253796513,
+      "rmse": 3736.11818029872,
+      "worst": -732061.4405409676
+    },
+    "B int full strip": {
+      "net": 332105.7464997816,
+      "rmse": 5288.132151947893,
+      "worst": -752665.9127549458
+    },
+    "C frac c90": {
+      "net": 269093.20484960894,
+      "rmse": 5641.236441908386,
+      "worst": -740894.7649686221
+    },
+    "D frac c80": {
+      "net": 194141.89742832724,
+      "rmse": 8825.38968560959,
+      "worst": -748382.445398755
+    }
+  },
+  "case_studies": {
+    "covid": {
+      "fair_strike": 0.1002,
+      "realised": 0.8488,
+      "theoretical": -748598.6,
+      "net": -732061.4,
+      "tracking_error": 16537.2
+    },
+    "april_2025": {
+      "fair_strike": 0.0453,
+      "realised": 0.255,
+      "theoretical": -209690.7,
+      "net": -209152.9,
+      "tracking_error": 537.8
+    }
+  },
+  "result": "RESULT B - canonical engine validated; premium exists but baseline economics are weak"
+}

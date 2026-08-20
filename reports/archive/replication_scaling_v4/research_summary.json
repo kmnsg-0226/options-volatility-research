@@ -1,0 +1,67 @@
+{
+  "spec_sha256": "aa2a9a67649f61b2a07f6fea1af4b9ae9f609e1bc7c7db44d682f20acebbb69c",
+  "S_ref": 264.46,
+  "defect": {
+    "corr_spot_vs_contracts_per_leg_preOOS": -0.34024668562078064,
+    "contracts_per_leg_2020_2022": 3.344453091106714,
+    "contracts_per_leg_OOS_fixed": 1.5322031656424806,
+    "contracts_per_leg_OOS_indexed": 2.8380955608798946,
+    "abs_fair_strike_error_OOS_fixed": 0.15739598983218997,
+    "abs_fair_strike_error_OOS_indexed": 0.07012256129815944
+  },
+  "oos": {
+    "A fractional ideal": {
+      "n": 32.0,
+      "gross": -4489.247924587369,
+      "net": -20525.640343956824,
+      "sharpe": -0.08737333829541692,
+      "max_dd": 0.1304092838236609,
+      "worst": -141855.6244240427,
+      "es95": -76727.74327758135,
+      "costs": 16036.392419369447,
+      "net_per_1m_notional": -20525.640343956824,
+      "net_over_indexed_capital": -0.010708114307565854,
+      "t_iid": -0.13784593448764876
+    },
+    "B fixed $1m integer": {
+      "n": 32.0,
+      "gross": -162.3199999997305,
+      "net": -17302.476095999766,
+      "sharpe": -0.06785030582651434,
+      "max_dd": 0.1406493244307977,
+      "worst": -153587.8102819999,
+      "es95": -82871.77235374997,
+      "costs": 17140.156095999995,
+      "net_per_1m_notional": -17302.476095999766,
+      "net_over_indexed_capital": -0.009026607147700542,
+      "t_iid": -0.10704511232368956
+    },
+    "C spot-indexed integer": {
+      "n": 32.0,
+      "gross": -39886.92999999979,
+      "net": -71604.54521299968,
+      "sharpe": -0.1378482836787502,
+      "max_dd": 0.19655379675933538,
+      "worst": -314822.07064700004,
+      "es95": -169561.26117500005,
+      "costs": 31717.615213,
+      "net_per_1m_notional": -37355.69961440034,
+      "net_over_indexed_capital": -0.03735569961440034,
+      "t_iid": -0.21747853351979052
+    }
+  },
+  "paired_oos": {
+    "fixed_repl_loss": {
+      "mean": 100.72388274865796,
+      "t": 0.22755657388272196
+    },
+    "indexed_repl_loss": {
+      "mean": -1596.2157771575912,
+      "t": -0.2827906389903862
+    },
+    "indexed_minus_fixed": {
+      "mean": -1696.9396599062497,
+      "t": -0.323501060020918
+    }
+  }
+}

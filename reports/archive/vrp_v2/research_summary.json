@@ -1,0 +1,57 @@
+{
+  "horizon_method": "trading-day horizon = round(calendar DTE * 252/365); label used only after it matured",
+  "forecast_models_tested": 14,
+  "best_forecast_model": "IV2_raw",
+  "best_forecast_r2_vs_mean": 0.2854026850672374,
+  "har_r2_vs_mean": 0.06258092761266187,
+  "combined_r2_vs_mean": 0.08467054272594043,
+  "mean_implied_variance": 0.028718901571776256,
+  "mean_realised_target": 0.031130135149419768,
+  "mean_atm_variance_premium": -0.002297258770537089,
+  "vrp_v2_monotonicity": {
+    "VRP_baseline_HAR": -0.6606,
+    "VRP_v2_combined": -0.697,
+    "VRP_v2_ivlinear": 0.0667,
+    "VRP_v2_comboavg": -0.6606,
+    "VRP_v2_ratio": -0.7212,
+    "VRP_v2_log": -0.8061,
+    "VRP_v2_scaled": -0.6364,
+    "VRP_v2_iv_scaled": -0.0545
+  },
+  "best_pseudo_oos_sharpe": -0.0248340828667115,
+  "result": "RESULT C - no robust edge",
+  "evaluation_sample_rows": 2977,
+  "forecast_models_evaluated": 12,
+  "r2_vs_mean": {
+    "IV2_raw": 0.3081,
+    "COMBO_avg_HAR_IV2": 0.2742,
+    "logCOMBINED_logfeat": 0.257,
+    "COMBINED": 0.2541,
+    "COMBINED_ridge": 0.2541,
+    "IV2_linear": 0.2385,
+    "HAR": 0.2186,
+    "logHAR_logfeat": 0.2085,
+    "ewma_094": 0.0395,
+    "trailing_rv_63": -0.1203,
+    "trailing_rv_22": -0.16,
+    "RW_current_rv": -0.7511
+  },
+  "rmse": {
+    "IV2_raw": 0.06311,
+    "COMBO_avg_HAR_IV2": 0.06464,
+    "logCOMBINED_logfeat": 0.0654,
+    "COMBINED": 0.06553,
+    "COMBINED_ridge": 0.06553,
+    "IV2_linear": 0.06621,
+    "HAR": 0.06707,
+    "logHAR_logfeat": 0.0675,
+    "ewma_094": 0.07436,
+    "trailing_rv_63": 0.0803,
+    "trailing_rv_22": 0.08172,
+    "RW_current_rv": 0.1004
+  },
+  "excluded_models": {
+    "logHAR": "level features with log target exploded in 2020",
+    "logCOMBINED": "same"
+  }
+}

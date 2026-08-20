@@ -1,0 +1,17 @@
+{
+  "split": {
+    "warmup_start": "2013-06-05",
+    "development": "2013-06-05..2018-12-31",
+    "validation": "2019-01-01..2022-12-31",
+    "holdout": "2023-01-01..2025-08-28"
+  },
+  "specifications_tested": 34,
+  "unconditional_short_straddle": {
+    "events": 3857,
+    "mean_net_pnl": 1.0557690708699266,
+    "mean_gross_pnl": 16.499946046149937,
+    "mean_costs": 15.444176975280012
+  },
+  "frozen_candidate": "short vol only when VRP z < -0.5, size = clip(-(z+0.5), 0, 1), DTE 21-45, all other conventions unchanged",
+  "result": "RESULT C - no robust edge found"
+}

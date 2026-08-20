@@ -1,0 +1,202 @@
+{
+  "phase": "V7 capped variance pricing and Greek attribution",
+  "objectives": [
+    "price capped realised variance as a path-dependent derivative under calibrated Heston",
+    "reintroduce Black-Scholes and Greeks through option-level P&L attribution"
+  ],
+  "verdicts": {
+    "capped_variance": "CAPPED A - fairly priced cap materially improves tail-adjusted economics (development: 97.2% of payoff on 27.4% of drawdown capital; OOS: 64.7% on 52.5% - same direction, materially weaker)",
+    "greek_attribution": "GREEKS B - useful, but material nonlinear residuals remain"
+  },
+  "part_i_capped_variance": {
+    "calibration": {
+      "dates": 152,
+      "converged": 152,
+      "flagged_unstable": 0,
+      "iv_rmse_median": 0.00918907767510215,
+      "iv_rmse_p95": 0.020721841592719423,
+      "price_rmse_median": 0.1049745381628471,
+      "feller_satisfied": 0,
+      "feller_ratio_median": 0.2578474173641965,
+      "kappa_at_upper_bound": 96,
+      "iv_rmse_deep_put": 0.01442607104024175,
+      "iv_rmse_atm": 0.006840372868346,
+      "iv_rmse_shortest_maturity": 0.013263356589662649
+    },
+    "monte_carlo_gate": {
+      "vanilla_max_abs_z": 4.249151522188734,
+      "forward_reproduction_error": 0.0002116370316197,
+      "daily_vs_continuous_monitoring_median_pct": 0.00042477665782785005,
+      "model_vs_market_variance_strike_median_pct": -0.0012155193983944001,
+      "paths": 200000
+    },
+    "cap_2_5x": {
+      "development 2013-2022": {
+        "uncapped_net": 564512.709406259,
+        "capped_net": 548729.3803245149,
+        "carry_retained": 0.9720407905459832,
+        "uncapped_sharpe": 0.2171686730241146,
+        "capped_sharpe": 0.5610392156165683,
+        "uncapped_worst": -748598.6454761173,
+        "capped_worst": -172598.43938019994,
+        "uncapped_maxdd_ratio": 0.8303725614851292,
+        "capped_maxdd_ratio": 0.2271339342508916,
+        "uncapped_es95": -175889.6536326746,
+        "capped_es95": -59713.89773297481,
+        "uncapped_skew": -8.525098676936185,
+        "capped_skew": -0.803980201698535,
+        "mean_concession_pct_of_strike": 0.2201397221864904,
+        "carry_sacrificed": 766833.5371209823,
+        "cap_binding_trades": 6.0,
+        "naive_same_strike_net": 1315562.9174454974
+      },
+      "OOS 2023-2025": {
+        "uncapped_net": 74631.71400787658,
+        "capped_net": 48253.23808377721,
+        "carry_retained": 0.6465513853625898,
+        "uncapped_sharpe": 0.1928953871513104,
+        "capped_sharpe": 0.2489386706470145,
+        "uncapped_worst": -209690.70300906105,
+        "capped_worst": -76399.63348525469,
+        "uncapped_maxdd_ratio": 0.2694656892504323,
+        "capped_maxdd_ratio": 0.1413770923355554,
+        "uncapped_es95": -134732.84462521615,
+        "capped_es95": -70688.54616777773,
+        "uncapped_skew": -4.520364473723165,
+        "capped_skew": -2.699980479084678,
+        "mean_concession_pct_of_strike": 0.1918738513768346,
+        "carry_sacrificed": 168133.174545314,
+        "cap_binding_trades": 1.0,
+        "naive_same_strike_net": 216386.4126290912
+      },
+      "full 2013-2025": {
+        "uncapped_net": 639144.4234141352,
+        "capped_net": 596982.6184082923,
+        "carry_retained": 0.9340339937871537,
+        "uncapped_sharpe": 0.2102752093181405,
+        "capped_sharpe": 0.5069718073834995,
+        "uncapped_worst": -748598.6454761173,
+        "capped_worst": -172598.43938019994,
+        "uncapped_maxdd_ratio": 0.8303725614851292,
+        "capped_maxdd_ratio": 0.2271339342508916,
+        "uncapped_es95": -165600.45138080997,
+        "capped_es95": -62457.55984167554,
+        "uncapped_skew": -8.690317065237748,
+        "capped_skew": -0.9577299236016348,
+        "mean_concession_pct_of_strike": 0.2141890125423523,
+        "carry_sacrificed": 934966.7116662964,
+        "cap_binding_trades": 7.0,
+        "naive_same_strike_net": 1531949.3300745883
+      }
+    },
+    "tail_insurance_fairness_2_5x": {
+      "development 2013-2022": {
+        "charged": 766833.5371209823,
+        "paid": 751050.2080392384,
+        "loss_ratio": 0.9794175289450676,
+        "binding_events": 6
+      },
+      "OOS 2023-2025": {
+        "charged": 168133.174545314,
+        "paid": 141754.6986212146,
+        "loss_ratio": 0.8431096302354651,
+        "binding_events": 1
+      },
+      "full 2013-2025": {
+        "charged": 934966.7116662964,
+        "paid": 892804.906660453,
+        "loss_ratio": 0.9549055549467608,
+        "binding_events": 7
+      }
+    },
+    "model_risk": {
+      "xi_plus_20pct_tail_change": 0.3154722619118335,
+      "xi_minus_20pct_tail_change": -0.3240748385268162,
+      "xi_plus_20pct_dev_net": 308607.0750537337,
+      "xi_plus_20pct_oos_net": -4757.094791220399,
+      "rho_shift_005_tail_change": -0.0113939765226287,
+      "black_scholes_tail_change": -0.999871487296034,
+      "iid_bootstrap_tail_change": -0.7514812846012875
+    },
+    "capital_economics_full_sample": {
+      "uncapped_return_on_drawdown_capital": 0.0611963116532505,
+      "capped_return_on_drawdown_capital": 0.2089675720400481,
+      "cash_benchmark": 0.0148,
+      "capital_note": "historical peak-drawdown proxy; broker or clearing margin is NOT modelled"
+    },
+    "not_claimed": "model-priced OTC contract; no exchange replication derived, no dealer bid-offer modelled",
+    "payoff_and_capital_by_window": {
+      "development 2013-2022": {
+        "payoff_retained": 0.972,
+        "drawdown_capital_used": 0.274,
+        "worst_trade_reduction": 0.769
+      },
+      "OOS 2023-2025": {
+        "payoff_retained": 0.647,
+        "drawdown_capital_used": 0.525,
+        "worst_trade_reduction": 0.636
+      },
+      "full 2013-2025": {
+        "payoff_retained": 0.934,
+        "drawdown_capital_used": 0.274,
+        "note": "the full-sample capital ratio equals the development one because the peak drawdown of both structures falls inside development; never pair a full-sample payoff with a single-window capital base"
+      }
+    }
+  },
+  "part_ii_greek_attribution": {
+    "option_days": 3230,
+    "non_expiry_days": 3078,
+    "correlation": 0.9951071437689748,
+    "explained_variance": 0.990170847043373,
+    "explained_variance_with_vanna_volga": 0.9882298813130038,
+    "explained_variance_small_moves": 0.7975653333562938,
+    "explained_variance_large_moves": 0.993343063021606,
+    "cumulative": {
+      "actual_pnl": 1064660.2847500741,
+      "delta_pnl": 777001.8366890373,
+      "gamma_pnl": -5071500.546052743,
+      "vega_pnl": -2235737.288103156,
+      "theta_pnl": 7350242.370095406
+    },
+    "cumulative_residual": 244653.91212153056,
+    "residual_share_of_net": 0.22979528364671023,
+    "residual_share_of_mean_abs_daily": 0.021765190710248728,
+    "greek_shares_of_gross_strip": {
+      "theta": 0.476222159616287,
+      "gamma": 0.3285824903356305,
+      "vega": 0.1448534056518908,
+      "delta": 0.0503419443961916
+    },
+    "greek_shares_of_gross_straddle": {
+      "theta": 0.4416206070620678,
+      "gamma": 0.3983976041001231,
+      "vega": 0.0926329305038172,
+      "delta": 0.0673488583339917
+    },
+    "covid": {
+      "option_leg": -452681.0,
+      "hedge_leg": -279087.0,
+      "attributed_gamma": -838722.0,
+      "attributed_theta": 491464.0,
+      "attributed_vega": -148222.0,
+      "spot_move": -0.2036,
+      "realised_over_implied": 8.47
+    },
+    "april_2025": {
+      "option_leg": 44628.0,
+      "hedge_leg": -257017.0,
+      "attributed_gamma": -273146.0,
+      "attributed_theta": 128749.0,
+      "attributed_vega": -66329.0,
+      "spot_move": 0.0103,
+      "realised_over_implied": 5.63,
+      "finding": "the static strip finished profitable; the entire loss sat in the dynamic hedge"
+    },
+    "hedge_distinction": {
+      "strip_cumulative_bsm_delta_pnl": 777001.8,
+      "canonical_identity_hedge_pnl": -609783.0,
+      "offset_fraction": 0.785,
+      "note": "the identity hedge is not an aggregate BSM delta hedge and does not neutralise the strip's delta"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "scope": "deterministic_european_bsm_validation",
+  "inputs": {
+    "S": 100.0,
+    "K": 100.0,
+    "T": 1.0,
+    "r": 0.05,
+    "q": 0.0,
+    "sigma": 0.2
+  },
+  "call_price": 10.450583572185565,
+  "put_price": 5.573526022256971,
+  "expected_call_reference": 10.450583572185565,
+  "expected_put_reference": 5.573526022256971,
+  "parity_residual": 0.0,
+  "direct_parity_residual": 0.0,
+  "call_greeks": {
+    "delta": 0.6368306511756191,
+    "gamma": 0.018762017345846895,
+    "vega": 37.52403469169379,
+    "theta": -6.414027546438197
+  },
+  "recovered_iv": 0.1999999999945307,
+  "iv_reconstruction_error": 2.0523316379694734e-10,
+  "american_option_warning": "SPY is American-style; BSM is the V1 IV/Greek convention."
+}

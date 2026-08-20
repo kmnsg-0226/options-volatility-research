@@ -1,0 +1,63 @@
+{
+  "frozen_strategy": "85-115% strike corridor, monthly, ~30d expiry, $1m variance notional, integer contracts, hold to DTE<=2",
+  "baseline_reproduction": "daily policy reproduces saved 85-115 baseline; hedge P&L exact, net differs $21.86 (0.005%) from one stale-quote trade (2016-12-01)",
+  "hedge_leg_drag_baseline": {
+    "hedge_pnl_before_costs": -163901.72239999985,
+    "hedge_execution_cost": 31523.82619863,
+    "total_hedge_drag": -195425.54859862986
+  },
+  "best_candidate": "E2 band $250k",
+  "baseline_metrics": {
+    "net": 447365.93890137016,
+    "sharpe": 0.5701833280669553,
+    "max_dd": 0.0964092631189568,
+    "worst": -148355.91245099995,
+    "es95": -50411.90987737494,
+    "hedge_trades": 3096.0,
+    "mean_dollar_delta": 185067.23189250383
+  },
+  "candidate_metrics": {
+    "net": 534675.8678948253,
+    "sharpe": 0.749283520010373,
+    "max_dd": 0.0911455777212044,
+    "worst": -115213.84035549995,
+    "es95": -44883.74995443743,
+    "hedge_trades": 1122.0,
+    "mean_dollar_delta": 206639.54990498887
+  },
+  "paired": {
+    "mean_delta": 574.4074275885206,
+    "t": 1.5042744912930248,
+    "ci": [
+      -123.2334001828247,
+      1358.7175431206729
+    ],
+    "top3_share": 0.7116786337514697
+  },
+  "band_robustness_signs": [
+    1,
+    1,
+    -1,
+    1,
+    1,
+    -1
+  ],
+  "mode_finding": "Less frequent hedging monotonically improves Mode-2 whipsaws (daily -$220,855 -> weekly -$64,989) but flips Mode-1 directional trades from +$115,526 to -$266,153.",
+  "gate": {
+    "A_net_at_least_baseline": true,
+    "B_sharpe_improves_materially": true,
+    "C_max_dd_not_worse": true,
+    "D_worst_trade_not_worse": true,
+    "E_residual_exposure_controlled": true,
+    "F_survives_2023_2025": true,
+    "G_improves_in_more_than_one_block": true,
+    "H_not_only_lower_costs": true,
+    "I_not_one_episode": false,
+    "J_adjacent_bands_similar": false,
+    "K_paired_improvement_significant": false,
+    "L_operationally_simple": true
+  },
+  "gate_passed": 9,
+  "gate_total": 12,
+  "result": "RESULT B - modest improvement but trade-offs remain"
+}

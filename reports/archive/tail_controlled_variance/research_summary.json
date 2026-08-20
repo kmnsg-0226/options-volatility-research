@@ -1,0 +1,47 @@
+{
+  "baseline": "90% variance-weight strip (reproduced exactly from reports/variance_replication)",
+  "leading_candidate": "E: static strike corridor 85-115% of entry spot, otherwise identical construction",
+  "loss_mechanics": "Worst trades split between realised-variance explosions (COVID: option leg loses) and path-dependent gamma losses that surface in the delta-hedge leg (Apr 2025: strip gains $39,092 while the hedge loses $226,492). European puts held to expiry cannot hedge the second mode.",
+  "true_corridor_branch": "closed as not faithfully implementable; see corridor_variance_results.csv",
+  "baseline_metrics": {
+    "net": 373674.07875822077,
+    "sharpe": 0.32482591034022373,
+    "max_dd": 0.21256928580953083,
+    "worst": -211142.49331349967,
+    "worst5": -512407.41059749946,
+    "es95": -70057.13574531242,
+    "skew": -5.995729661597972,
+    "t_iid": 1.1479428293364664
+  },
+  "candidate_metrics": {
+    "net": 447344.0739413702,
+    "sharpe": 0.57015475712502,
+    "max_dd": 0.09641063301473096,
+    "worst": -148355.91245099995,
+    "worst5": -335468.0631109996,
+    "es95": -50411.90987737494,
+    "skew": -4.335516410530801,
+    "t_iid": 2.0149410629472584
+  },
+  "carry_retention": 1.1971504029071716,
+  "exposure_ratio": 0.9742806161416537,
+  "drawdown_reduction": 0.5464507835759579,
+  "worst_trade_reduction": 0.29736591567702864,
+  "es95_improvement": 0.2804172003171277,
+  "tail_hedges": "all 15 protective-put and put-spread variants dominated; best retains 32% of carry",
+  "gate": {
+    "A_net_profitable_realistic_costs": true,
+    "B_better_tail_than_baseline": true,
+    "C_not_explained_by_lower_notional": true,
+    "D_acceptable_across_blocks": true,
+    "E_max_dd_materially_below_baseline": true,
+    "F_worst_trade_materially_below_baseline": true,
+    "G_carry_economically_meaningful": true,
+    "H_positive_at_1_5x_costs": true,
+    "I_no_single_period_dominates": true,
+    "J_executable_leg_count": true
+  },
+  "gate_passed": 10,
+  "gate_total": 10,
+  "result": "RESULT B - payoff improves materially, evidence remains statistically weak"
+}

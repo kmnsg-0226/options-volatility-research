@@ -1,0 +1,94 @@
+{
+  "verdict": "NOT EQUIVALENT (approximately correlated but systematically under-hedged)",
+  "delta_relationship": {
+    "correlation": 0.8882627862433532,
+    "regression_slope": 0.5665937186366035,
+    "r_squared": 0.789010777424805,
+    "interpretation": "the truncated strip carries about 57% of the delta the log contract requires"
+  },
+  "identity_check": {
+    "realised_mean": 0.030098049683157685,
+    "reconstructed_mean": 0.03005653756499896,
+    "residual_rmse": 0.0006511720100650602,
+    "median_relative_residual": 0.0006043223315694084
+  },
+  "unit_issue": {
+    "calendar_T_over_trading_T": 1.0764282329118178,
+    "note": "strip is sized on calendar T=dte/365 but the position is held only to DTE<=2, so realised variance covers a shorter window; a 7.6% annualisation mismatch"
+  },
+  "tracking_error": {
+    "A current": {
+      "corr": 0.7118519116759622,
+      "rmse": 56492.92989888343
+    },
+    "B theory": {
+      "corr": 0.9782771901383048,
+      "rmse": 15722.85687092851
+    },
+    "D no hedge": {
+      "corr": 0.7212220029963987,
+      "rmse": 50891.56811656742
+    }
+  },
+  "period_results": {
+    "pre-2023|A current delta hedge": {
+      "net": 423331.66022673546,
+      "sharpe": 0.7871192186565041,
+      "max_dd": 0.1208585361219544,
+      "worst": -108430.60706999977
+    },
+    "pre-2023|B theory hedge": {
+      "net": 147847.69686946552,
+      "sharpe": 0.053840400846305,
+      "max_dd": 0.6771770807953998,
+      "worst": -774834.5174419996
+    },
+    "pre-2023|D static strip no hedge": {
+      "net": 718574.5625,
+      "sharpe": 0.5836241509020217,
+      "max_dd": 0.2728515212279395,
+      "worst": -262508.4875
+    },
+    "OOS 2023-2025|A current delta hedge": {
+      "net": -17302.476095999737,
+      "sharpe": -0.0678503058265142,
+      "max_dd": 0.1406493244307977,
+      "worst": -153587.81028199987
+    },
+    "OOS 2023-2025|B theory hedge": {
+      "net": 58894.57346499998,
+      "sharpe": 0.1577605316085675,
+      "max_dd": 0.1877803942999617,
+      "worst": -218419.489075
+    },
+    "OOS 2023-2025|D static strip no hedge": {
+      "net": 363743.225,
+      "sharpe": 3.1062948315569745,
+      "max_dd": 0.0215857242323437,
+      "worst": -23675.6125
+    }
+  },
+  "april_2025": {
+    "option": 34092.5,
+    "current_hedge": -186842.5,
+    "theory_hedge": -251615.0,
+    "net_current": -153587.8,
+    "net_theory": -218419.5,
+    "vs_payoff": -224282.0,
+    "realised_variance": 0.2695,
+    "fair_strike": 0.0452,
+    "verdict": "A - theoretically required variance loss; the current hedge lost LESS than a true variance swap"
+  },
+  "covid": {
+    "option": -257822.0,
+    "current_hedge": 155139.0,
+    "theory_hedge": -510926.0,
+    "net_current": -108430.6,
+    "net_theory": -774834.5,
+    "vs_payoff": -763084.0,
+    "realised_variance": 0.8495,
+    "fair_strike": 0.0864,
+    "verdict": "current implementation under-delivered the variance loss by ~$655k"
+  },
+  "result": "RESULT C - hedge methodology was materially wrong and changes the strategy conclusion"
+}

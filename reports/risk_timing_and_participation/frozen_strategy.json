@@ -1,0 +1,52 @@
+{
+  "canonical_engine": {
+    "contracts": "fractional",
+    "costs": {
+      "equity_commission_per_share": 0.0,
+      "execution_lambda": 0.75,
+      "hedge_slippage_bps": 0.5,
+      "option_commission_per_contract": 0.65
+    },
+    "entry": "first trading day of each calendar month",
+    "financing": "self-financing cash account accrued on calendar days at the entry zero rate",
+    "hedge": "model-free identity h_t = N (2/T) (1/F - 1/S_t)",
+    "maturity": "nearest expiry to 30 calendar days within a 21-45 day band",
+    "module": "equity_options_vrp.research.canonical_variance_engine",
+    "multiplier": 100,
+    "realised_variance": "sum of squared close-to-close log returns / year fraction",
+    "settlement": "expiry intrinsic",
+    "strike_weighting": "dK/K^2",
+    "strip": "full CBOE model-free strip, zero-bid truncation",
+    "variance_notional": 1000000.0,
+    "version": "V5 canonical_variance_engine"
+  },
+  "caps": {},
+  "combined_candidates": 0,
+  "development_window": "2013-01-01 to 2022-12-31",
+  "exposure_rule": {
+    "fallback": "if a strip cannot be built or the spot path is incomplete, the month is skipped",
+    "rationale": "No signal earned the right to move it. Every adaptive rule tested lost its advantage when a single two-month episode was removed, and none had a stable parameter neighbourhood combined with a positive paired mean against its own flat control.",
+    "scale": 1.0,
+    "type": "constant"
+  },
+  "lookbacks": {},
+  "name": "V6 canonical unconditional variance carry",
+  "oos_window": "2023-01-01 to 2025-08-29",
+  "participation_rule": "none - every scheduled month is traded",
+  "pre_registered_diagnostics": {
+    "purpose": "Not strategy candidates and not comparators for the selection. These three rules scored best in development and are frozen here so that their out-of-sample behaviour is a genuine pre-registered test of the hypothesis this phase rejects, rather than a search run after the fact.",
+    "rules": [
+      "A1_inverse_variance",
+      "D_term_structure",
+      "E2_deep_downside"
+    ],
+    "stated_expectation": "If the development advantage of these rules was a single-crisis artifact, their OOS edge over a same-average-exposure control should be approximately zero or negative, except in any month that contains a comparable variance shock."
+  },
+  "scaling_normalisation": "none",
+  "schedule": "monthly, first trading day, 2013-01-01 onward",
+  "selection": "section 25 option B - the canonical unconditional baseline, because no adaptive rule genuinely improved it",
+  "sha256": "3c7299467e18392968ed7b20775da99a7caa014c487b6d38d5ba1103283df1e0",
+  "signals_used": [],
+  "variant_budget": 25,
+  "variants_tested": 12
+}

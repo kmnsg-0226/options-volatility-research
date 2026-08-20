@@ -1,0 +1,200 @@
+{
+  "protocol": "stitched walk-forward; 2013-06..2016-12 calibration only, headline months 2017-01..2025-08",
+  "baseline_reproduction": "monthly $1m c90 daily hedge reproduces the frozen reference exactly (max |diff| = 0.00000000)",
+  "exposure_equalisation": {
+    "monthly": 974034,
+    "biweekly": 975333,
+    "weekly": 964622,
+    "note": "mean live variance notional within 1.1% across schedules; vintages 0.97 / 1.95 / 3.86"
+  },
+  "walk_forward": {
+    "1 baseline monthly $1m": {
+      "net": 246498.87136550108,
+      "sharpe": 0.2599268105119077,
+      "max_dd": 0.2384254545279677,
+      "worst_month": -211142.49331349967,
+      "es95": -88120.59926266655,
+      "t_iid": 0.7652038110628266,
+      "top5_share": 0.8115007364248558
+    },
+    "2 biweekly 2x$500k": {
+      "net": 232804.19818300116,
+      "sharpe": 0.2896559225243469,
+      "max_dd": 0.2492405439013351,
+      "worst_month": -227418.153235,
+      "es95": -69329.33256674999,
+      "t_iid": 0.8527239470835392,
+      "top5_share": 0.7313939317071679
+    },
+    "3 weekly 4x$250k": {
+      "net": -107750.52105199933,
+      "sharpe": -0.0838570293556004,
+      "max_dd": 0.4632449331140261,
+      "worst_month": -399134.5978969999,
+      "es95": -108924.33481441664,
+      "t_iid": -0.2468684100764325,
+      "top5_share": -1.795096534513796
+    },
+    "4 risk-targeted (monthly)": {
+      "net": 152728.00785542486,
+      "sharpe": 0.3307456362047282,
+      "max_dd": 0.0939800926483699,
+      "worst_month": -104687.60565874784,
+      "es95": -48061.85090214139,
+      "t_iid": 0.9736887888472084,
+      "top5_share": 0.5982344541869504
+    },
+    "5 term-structure scaled (monthly)": {
+      "net": 296475.9969763262,
+      "sharpe": 0.3691429668947804,
+      "max_dd": 0.189426920941834,
+      "worst_month": -164716.97152738934,
+      "es95": -75478.47153139417,
+      "t_iid": 1.086727469700492,
+      "top5_share": 0.6501291466720553
+    },
+    "6 weekly + risk target": {
+      "net": -106354.5980807125,
+      "sharpe": -0.1293645876265882,
+      "max_dd": 0.2767713600235254,
+      "worst_month": -261577.2217063533,
+      "es95": -69093.80147227398,
+      "t_iid": -0.3808390341630469,
+      "top5_share": -0.6719723171542483
+    },
+    "7 weekly + term structure": {
+      "net": -73071.21066357094,
+      "sharpe": -0.0578581861765687,
+      "max_dd": 0.4412311883417894,
+      "worst_month": -399134.5978969999,
+      "es95": -101866.40569204115,
+      "t_iid": -0.1703298881569768,
+      "top5_share": -2.602601812631843
+    },
+    "8 weekly + risk + term": {
+      "net": -94984.13738688656,
+      "sharpe": -0.1161795300174315,
+      "max_dd": 0.2712977887792499,
+      "worst_month": -261577.2217063533,
+      "es95": -66742.42565147899,
+      "t_iid": -0.3420232755587711,
+      "top5_share": -0.742879071557535
+    }
+  },
+  "paired_vs_baseline": {
+    "2 biweekly 2x$500k": {
+      "mean_diff": -131.6795498317294,
+      "t": -0.0424555279530699,
+      "ci": [
+        -6228.720262446035,
+        5751.415897854691
+      ],
+      "positive_months": 0.4423076923076923
+    },
+    "3 weekly 4x$250k": {
+      "mean_diff": -3406.2441578605803,
+      "t": -0.8193406627046843,
+      "ci": [
+        -12783.299951564304,
+        3592.335514463705
+      ],
+      "positive_months": 0.375
+    },
+    "4 risk-targeted (monthly)": {
+      "mean_diff": -901.6429183661166,
+      "t": -0.4684318154227259,
+      "ci": [
+        -4043.425089677463,
+        3097.9245571717856
+      ],
+      "positive_months": 0.3846153846153846
+    },
+    "5 term-structure scaled (monthly)": {
+      "mean_diff": 480.54928471947215,
+      "t": 0.8677404319929527,
+      "ci": [
+        -313.0336748775012,
+        1683.6224580730802
+      ],
+      "positive_months": 0.0961538461538461
+    },
+    "6 weekly + risk target": {
+      "mean_diff": -3392.821821598207,
+      "t": -0.9664644886981468,
+      "ci": [
+        -10314.497603339209,
+        3373.84849723859
+      ],
+      "positive_months": 0.3461538461538461
+    },
+    "7 weekly + term structure": {
+      "mean_diff": -3072.7892502795394,
+      "t": -0.7284912786517878,
+      "ci": [
+        -12485.611930952418,
+        4115.123035072339
+      ],
+      "positive_months": 0.3653846153846153
+    },
+    "8 weekly + risk + term": {
+      "mean_diff": -3283.4904687729572,
+      "t": -0.9264006398825688,
+      "ci": [
+        -10260.417370898002,
+        3576.957226320157
+      ],
+      "positive_months": 0.3365384615384615
+    }
+  },
+  "integer_degradation": {
+    "monthly $1m": {
+      "contracts_per_leg": 3.8653846153846154,
+      "integer_strike_error_pct": -1.6710226865340234
+    },
+    "biweekly $500k": {
+      "contracts_per_leg": 2.0185185185185186,
+      "integer_strike_error_pct": 1.0131679735859145
+    },
+    "weekly $250k": {
+      "contracts_per_leg": 0.96,
+      "integer_strike_error_pct": 14.745908471588464
+    }
+  },
+  "deleveraging_control": {
+    "flat_worst_reduction_pct": 9.5,
+    "risk_target_worst_reduction_pct": 50.4,
+    "reshaping_beyond_size_pp": 41.0
+  },
+  "entry_date_dispersion": {
+    "within_month_std": 2511,
+    "best_minus_worst": 5613,
+    "ratio_to_typical_outcome": 1.96
+  },
+  "recent_2023_2025": {
+    "1 baseline monthly $1m": -16821.93101549984,
+    "2 biweekly 2x$500k": 29151.66893399995,
+    "3 weekly 4x$250k": -32296.42396049993,
+    "4 risk-targeted (monthly)": 25980.976041340284,
+    "5 term-structure scaled (monthly)": -3090.251768509115,
+    "6 weekly + risk target": 5861.736751662291,
+    "7 weekly + term structure": -17747.192858015413,
+    "8 weekly + risk + term": 12757.71946190713
+  },
+  "verdict": {
+    "A_monthly_entry_noisy": true,
+    "B_staggering_improves_after_equal_exposure": false,
+    "C_staggering_survives_costs": false,
+    "D_risk_targeting_reduces_tails": true,
+    "E_best_risk_measure": "model-free implied variance at entry",
+    "F_term_structure_informative": "weakly",
+    "G_surface_improves_scaling": "not tested beyond diagnostics",
+    "H_improvement_survives_walk_forward": false,
+    "I_2023_2025": "baseline -$16,822; risk-targeted +$25,981; biweekly +$29,152",
+    "J_less_concentrated": "partly: top-5 month share 0.812 -> 0.598",
+    "K_still_dominated_by_few_months": true,
+    "L_paired_improvement_vs_baseline": false,
+    "M_genuine_construction_not_deleveraging": true,
+    "N_more_stable_tradeable_strategy": false
+  },
+  "result": "RESULT B - risk profile improves but edge remains weak / regime-dependent"
+}

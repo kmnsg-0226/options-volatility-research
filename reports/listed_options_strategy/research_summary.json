@@ -1,0 +1,236 @@
+{
+  "phase": "V8 Greek-managed listed SPY option strategy",
+  "question": "Can a delta-hedged, Greek-managed winged short-volatility structure retain enough theta carry while using listed options to control gamma and tail risk?",
+  "verdict": "RESULT C - listed wings and Greek controls do not produce an economically attractive strategy",
+  "protocol": {
+    "development": "2013-01-01 to 2022-12-31",
+    "oos": "2023-01-01 to 2025-08-29",
+    "variants_tested": 6,
+    "variant_budget": 6,
+    "oos_runs": 1,
+    "frozen_spec_sha256": "7155b37835e9e421965c305627f19928753fd1f74ad8ef1fb0e6c6e6a26c6841",
+    "selected": "naked ATM straddle (section 28 fallback; no variant cleared the hierarchy)"
+  },
+  "engine": {
+    "reconciliation_max_error": 3.637978807091713e-11,
+    "residual_delta_after_hedging_shares": 0.0,
+    "stale_vol_days": 24,
+    "option_days": 7914
+  },
+  "surface_economics": {
+    "atm_implied_variance": 0.02723,
+    "atm_premium_vs_realised": -0.00423,
+    "atm_premium_t": -0.62,
+    "wing10_implied_variance": 0.03362,
+    "wing_premium_vs_realised": 0.00216,
+    "wing_premium_t": 0.32,
+    "strike_integrated_ivar30": 0.03617,
+    "strip_premium_vs_realised": 0.0047,
+    "strip_premium_t": 0.69,
+    "realised_variance": 0.03147,
+    "wing_iv_exceeds_atm_share": 0.99,
+    "wing_minus_atm_vol_points": 1.95,
+    "finding": "the at-the-money premium is negative and the wings carry a positive one, so a winged straddle is short the cheapest part of the surface and long the richest"
+  },
+  "development": {
+    "naked": {
+      "net_pnl": 45411.5151688343,
+      "sharpe": 0.0354766984904614,
+      "nw_t": 0.1201963823626885,
+      "worst_trade": -302734.4751872243,
+      "es95": -96472.582365369,
+      "skew": -4.572559791754076,
+      "max_dd": 480736.2591327857,
+      "costs": 188989.46714930696,
+      "financing": -11721.076756572638,
+      "mean_contracts": 183.96666666666667,
+      "gamma_capped_share": 0.9666666666666668,
+      "greek_bridge": {
+        "theta": 4240747.205389256,
+        "gamma": -4097255.2199182007,
+        "vega": -307057.48427598487,
+        "delta": -511453.55907471315
+      }
+    },
+    "wing10": {
+      "net_pnl": -215134.63322935504,
+      "sharpe": -0.2066730503805325,
+      "nw_t": -0.6392875938983986,
+      "worst_trade": -106305.14447589668,
+      "es95": -75322.2929887575,
+      "skew": -0.1565250146757,
+      "max_dd": 413539.3644500809,
+      "costs": 444853.14335875696,
+      "financing": -11313.014268809951,
+      "mean_contracts": 656.2666666666667,
+      "gamma_capped_share": 0.95,
+      "greek_bridge": {
+        "theta": 3607810.116847677,
+        "gamma": -3622330.1796410875,
+        "vega": 84827.48534420293,
+        "delta": -1013080.5243982081
+      }
+    },
+    "wing15": {
+      "net_pnl": -335866.1213298486,
+      "sharpe": -0.2909698626378126,
+      "nw_t": -0.8612256765650057,
+      "worst_trade": -133223.46970201418,
+      "es95": -87016.87426292479,
+      "skew": -0.3895048926439157,
+      "max_dd": 509783.44722637674,
+      "costs": 612816.5622074269,
+      "financing": -11856.59483723944,
+      "mean_contracts": 889.4,
+      "gamma_capped_share": 0.9416666666666668,
+      "greek_bridge": {
+        "theta": 3533352.8537452547,
+        "gamma": -3446828.937017284,
+        "vega": 72320.93882571996,
+        "delta": -1203838.03571482
+      }
+    }
+  },
+  "oos": {
+    "naked": {
+      "net_pnl": -101775.49641217198,
+      "sharpe": -0.4177265473619581,
+      "nw_t": -0.8090767548834067,
+      "worst_trade": -135023.52658655707,
+      "es95": -78644.53411846471,
+      "skew": -4.194834663283626,
+      "max_dd": 196275.77652122133,
+      "costs": 27357.68436021971,
+      "financing": -30238.109096655346,
+      "annualised_return_on_reference_capital": -0.0395042508656172,
+      "greek_bridge": {
+        "theta": 1026126.5374058122,
+        "gamma": -1047587.3418394822,
+        "vega": -178182.40965784073,
+        "delta": 38895.202955296525
+      }
+    },
+    "wing10": {
+      "net_pnl": -153551.17066552315,
+      "sharpe": -1.1163376057519008,
+      "nw_t": -1.6953304156328153,
+      "worst_trade": -45427.46039799307,
+      "es95": -35871.785766421985,
+      "skew": -0.2247364124206186,
+      "max_dd": 240824.97314036055,
+      "costs": 55279.68020059737,
+      "financing": -26219.270053245793,
+      "annualised_return_on_reference_capital": -0.0596010255957304,
+      "greek_bridge": {
+        "theta": 849897.0174233487,
+        "gamma": -959397.1945038672,
+        "vega": -146775.48960023356,
+        "delta": -145136.7795883219
+      }
+    },
+    "wing15": {
+      "net_pnl": -169229.2643742748,
+      "sharpe": -1.221603036864633,
+      "nw_t": -1.7795740349741145,
+      "worst_trade": -28872.268955883836,
+      "es95": -28785.175253930047,
+      "skew": 0.3046509575552311,
+      "max_dd": 255300.9187366907,
+      "costs": 73349.6161163375,
+      "financing": -24450.54810580108,
+      "annualised_return_on_reference_capital": -0.0656864918307161,
+      "greek_bridge": {
+        "theta": 834407.8200463487,
+        "gamma": -952242.1779732434,
+        "vega": -170429.38408106778,
+        "delta": -187830.39984786866
+      }
+    }
+  },
+  "tails": {
+    "naked": {
+      "worst": -302734.4751872243,
+      "worst_5": -541500.6721287377,
+      "skew": -4.572559791754075,
+      "kurtosis": 37.87074401831664,
+      "theta_retained_vs_naked": 1.0,
+      "cost_added_vs_naked": 0.0
+    },
+    "wing10": {
+      "worst": -106305.14447589668,
+      "worst_5": -398917.482635003,
+      "skew": -0.1565250146756997,
+      "kurtosis": 2.8432635538214157,
+      "theta_retained_vs_naked": 0.9037347895992858,
+      "cost_added_vs_naked": 255863.67620945
+    },
+    "wing15": {
+      "worst": -133223.46970201418,
+      "worst_5": -464626.0030289587,
+      "skew": -0.3895048926439154,
+      "kurtosis": 3.8683428120033376,
+      "theta_retained_vs_naked": 0.90440707468514,
+      "cost_added_vs_naked": 423827.0950581199
+    }
+  },
+  "case_studies": {
+    "covid_2020_03_02": {
+      "naked": {
+        "net_pnl": -302734.4751872243,
+        "gamma_pnl": -377690.2498717873,
+        "theta_pnl": 62350.01312951584
+      },
+      "wing10": {
+        "net_pnl": -36322.54545119547,
+        "gamma_pnl": -90154.27185152128,
+        "theta_pnl": -59073.130123798226
+      },
+      "wing15": {
+        "net_pnl": 15817.21357334284,
+        "gamma_pnl": -20890.313043645852,
+        "theta_pnl": -55326.085170899896
+      }
+    },
+    "april_2025": {
+      "naked": {
+        "net_pnl": -135023.52658655707,
+        "gamma_pnl": -205933.17479286948,
+        "theta_pnl": 31160.30020545994
+      },
+      "wing10": {
+        "net_pnl": -45427.46039799307,
+        "gamma_pnl": -106840.78217910018,
+        "theta_pnl": -23517.67375717029
+      },
+      "wing15": {
+        "net_pnl": -28698.08155197626,
+        "gamma_pnl": -94761.16824214056,
+        "theta_pnl": -30343.417565136067
+      }
+    },
+    "note": "wings protected both episodes. In a continuously delta-hedged book they work through gamma every day, not through terminal payoff, which is why they helped in April 2025 despite that episode being a path event rather than a large terminal move"
+  },
+  "capital_economics_on_drawdown_proxy": {
+    "development 2013-2022 | naked": 0.0095310504180842,
+    "OOS 2023-2025 | naked": -0.2012691100541693,
+    "full 2013-2025 | naked": -0.0093216762577399,
+    "development 2013-2022 | wing10": -0.0524898254512083,
+    "OOS 2023-2025 | wing10": -0.2474868981340778,
+    "full 2013-2025 | wing10": -0.0640763635353014,
+    "development 2013-2022 | wing15": -0.0664755781714528,
+    "OOS 2023-2025 | wing15": -0.2572904639581931,
+    "full 2013-2025 | wing15": -0.0702603114843146
+  },
+  "capital_note": "peak drawdown is a historical proxy; actual SPY portfolio margin is NOT modelled",
+  "closed_branches": {
+    "wings": "negative in development and OOS under both vega and gamma normalisation",
+    "section_16_theta_gamma_filter": "Spearman 0.178 (p=0.052), non-monotonic in every structure",
+    "section_17_expected_carry_filter": "improves only 2 of 4 development blocks"
+  },
+  "limitations": [
+    "early assignment on American options not modelled",
+    "gamma cap applied at entry only; dollar gamma reaches -$126M intra-trade against a -$44M entry cap",
+    "wing delta within 0.05 of target on 149 of 152 entries, worst case 0.15",
+    "end-of-day quotes cannot establish capacity"
+  ]
+}

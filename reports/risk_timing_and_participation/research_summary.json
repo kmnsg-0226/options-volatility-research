@@ -1,0 +1,96 @@
+{
+  "phase": "V6 canonical risk and timing",
+  "question": "Can ex-ante risk scaling and selective participation turn the structural SPY variance premium into a more stable investable strategy?",
+  "verdict": "RESULT C - ex-ante scaling/timing does not make unconditional variance carry investable",
+  "engine": {
+    "frozen_from": "V5 canonical variance engine",
+    "reproduction": "exact, zero difference on every trade",
+    "max_reconciliation_error": 1.1641532182693481e-09,
+    "tracking_correlation_development": 0.9994304979610449
+  },
+  "protocol": {
+    "oos_start": "2023-01-01",
+    "development_trades": 120,
+    "oos_trades": 32,
+    "strategy_variants_tested": 12,
+    "variant_budget": 25,
+    "combined_candidates": 0,
+    "frozen_spec_sha256": "3c7299467e18392968ed7b20775da99a7caa014c487b6d38d5ba1103283df1e0",
+    "oos_runs": 1
+  },
+  "branches": {
+    "A_risk_targeting": "CLOSED",
+    "B_expected_realised_variance": "informative, no strategy variant",
+    "C_vrp_participation": "CLOSED",
+    "D_term_structure": "CLOSED",
+    "E_surface_tail_state": "CLOSED",
+    "F_carry_to_tail_risk": "CLOSED"
+  },
+  "selected_strategy": "canonical unconditional baseline (section 25 option B)",
+  "development": {
+    "net_total": 368603.82737358386,
+    "sharpe": 0.1462570522493577,
+    "t_stat": 0.46250540897022335,
+    "max_dd_ratio": 0.8130142053747063,
+    "worst": -732061.4405409676,
+    "es95": -171332.03237302884,
+    "skew": -8.719735713363564,
+    "kurtosis": 89.30379859820269,
+    "hit_rate": 0.7416666666666667,
+    "costs": 117783.10224510371,
+    "financing": -789.2853295727164
+  },
+  "development_walkforward_sharpe_2017_2022": 0.051,
+  "oos": {
+    "net_pnl": 12063.89800606732,
+    "gross_pnl": 49550.669248942984,
+    "financing": -16691.947352472314,
+    "costs": 20794.823890403222,
+    "sharpe": 0.0320086033012079,
+    "newey_west_t": 0.0504254189678387,
+    "max_dd_ratio": 0.2630120872588286,
+    "worst_trade": -209152.86971715887,
+    "es95": -131506.0436294143,
+    "skew": -4.693802256231739,
+    "kurtosis": 24.072699841710623,
+    "win_rate": 0.78125,
+    "annualised_return_on_avg_notional": 0.0046826129083061
+  },
+  "key_findings": {
+    "premium_is_paid_for_the_risk_targeting_removes": "Mean development P&L rises monotonically across entry-variance quartiles ($76/$3,432/$3,697/$5,083) while dispersion rises nine-fold. Inverse-variance scaling halves top-quartile mean P&L.",
+    "carry_signal_is_inverted_at_the_moment_it_matters": "Expected VRP peaked before both catastrophes. C3/F1/F2 held their 1.50 cap into 2020-03-02; C3 sits at the 0th percentile of 2000 random month selections.",
+    "implied_variance_is_the_best_forecast": "QLIKE 0.380 vs HAR 0.441 and EWMA 0.570, so expected VRP against any weaker forecast is mostly forecast error.",
+    "every_edge_was_one_episode": "No rule keeps a positive edge over its flat control once Feb-Mar 2020 is removed; D falls to -0.001.",
+    "single_trade_dominance": "Development: one trade -$732,061 against a ten-year total of +$368,604. OOS: April 2025 -$209,153 against a period total of +$12,064; the other 31 trades made +$221,217.",
+    "no_specification_beats_luck": "Expected maximum Sharpe under the null across 12 specifications is 0.263; the best observed is 0.386 with a deflated Sharpe probability of 0.61. Bootstrap intervals for mean trade P&L contain zero for every specification.",
+    "puts_are_a_poor_hedge_for_path_risk": "0.90-moneyness puts cost $383,791 over 2013-2025 and returned $127,119, a drag of 67% of lifetime net P&L, while improving the worst trade only 11.5%. Variance is a path functional; a put pays on the terminal level, and SPY had recovered much of the March 2020 drawdown by the contract's expiry.",
+    "surface_signals_carry_a_data_artifact": "deep_down_share correlates -0.885 with put-wing width, so it partly measures OptionMetrics quote coverage."
+  },
+  "pre_registered_diagnostics_oos": {
+    "A1_inverse_variance": {
+      "edge_sharpe": 0.2760001039277144,
+      "edge_sharpe_ex_shock": 0.122747413870111,
+      "april_2025_scale": 0.5350330669444339,
+      "april_2025_loss": -111923.1700520128
+    },
+    "D_term_structure": {
+      "edge_sharpe": 0.1226771649812152,
+      "edge_sharpe_ex_shock": -0.0387455477442433,
+      "april_2025_scale": 0.6972743419122026,
+      "april_2025_loss": -145847.88413785186
+    },
+    "E2_deep_downside": {
+      "edge_sharpe": 0.004816188629692,
+      "edge_sharpe_ex_shock": 0.2737867769693118,
+      "april_2025_scale": 0.8297651019189674,
+      "april_2025_loss": -173556.47398803942
+    }
+  },
+  "tail_hedge_diagnostic": {
+    "structure": "0.90 put and 0.90/0.80 put spread, spot-equivalent sizing",
+    "full_sample_premium": 383791.2098728796,
+    "full_sample_payoff": 127118.93704219676,
+    "worst_trade_unhedged": -732061.4405409676,
+    "worst_trade_hedged": -647964.5755501883
+  }
+}

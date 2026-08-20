@@ -1,0 +1,20 @@
+{
+  "estimator": "CBOE strike-integrated model-free implied variance from WRDS SPY chains",
+  "chains_computed": 48063,
+  "success_rate": 0.958,
+  "median_strikes_used": 78,
+  "mean_model_free_variance": 0.03772048668895287,
+  "mean_atm_variance": 0.028818020894363958,
+  "mean_realised_variance": 0.03113831837163599,
+  "model_free_over_atm_ratio": 1.308920096464015,
+  "mean_model_free_premium": 0.006582168317316883,
+  "mean_atm_premium": -0.002320297477272032,
+  "model_free_premium_nw_t": 2.031151414245399,
+  "pct_model_free_premium_positive": 0.8467573221757322,
+  "skew_wedge_mean": 0.008902465794588914,
+  "condition_A_premium_positive": true,
+  "condition_B_positive_monotonicity": false,
+  "monotonicity_rho_model_free": -0.7697,
+  "strategy_development_gated_off": true,
+  "result": "RESULT B - economically interesting but statistically weak"
+}
